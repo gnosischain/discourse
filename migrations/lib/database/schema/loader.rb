@@ -106,8 +106,10 @@ module Migrations::Database::Schema
         :text
       when :jsonb
         :json
-      else
+      when :boolean, :date, :datetime, :float, :inet, :integer, :numeric, :json, :text
         datatype
+      else
+        raise "Unknown dataype: #{datatype}"
       end
     end
 
