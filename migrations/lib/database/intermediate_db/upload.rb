@@ -20,7 +20,7 @@ module Migrations::Database::IntermediateDB
     class << self
       def create_for_file!(path:, filename:, type: nil, description: nil, origin: nil, user_id: nil)
         create!(
-          placeholder_hash: ::Migrations::IdGenerator.hash_id(path),
+          placeholder_hash: ::Migrations::ID.hash(path),
           filename:,
           path:,
           type:,
@@ -32,7 +32,7 @@ module Migrations::Database::IntermediateDB
 
       def create_for_url!(url:, filename:, type: nil, description: nil, origin: nil, user_id: nil)
         create!(
-          placeholder_hash: ::Migrations::IdGenerator.hash_id(url),
+          placeholder_hash: ::Migrations::ID.hash(url),
           filename:,
           url:,
           type:,
@@ -44,7 +44,7 @@ module Migrations::Database::IntermediateDB
 
       def create_for_data!(data:, filename:, type: nil, description: nil, origin: nil, user_id: nil)
         create!(
-          placeholder_hash: ::Migrations::IdGenerator.hash_id(data),
+          placeholder_hash: ::Migrations::ID.hash(data),
           filename:,
           data: ::Migrations::Database.to_blob(data),
           type:,
