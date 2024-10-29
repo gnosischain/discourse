@@ -73,10 +73,16 @@ export default function () {
           resetNamespace: true,
         });
         this.route("adminEmojis", { path: "/emojis", resetNamespace: true });
-        this.route("adminPermalinks", {
-          path: "/permalinks",
-          resetNamespace: true,
-        });
+
+        this.route(
+          "adminPermalinks",
+          { path: "/permalinks", resetNamespace: true },
+          function () {
+            this.route("new");
+            this.route("edit", { path: "/:permalink_id" });
+          }
+        );
+
         this.route("adminEmbedding", {
           path: "/embedding",
           resetNamespace: true,
