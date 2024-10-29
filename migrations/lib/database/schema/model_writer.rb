@@ -48,15 +48,15 @@ module Migrations::Database::Schema
       output_stream.puts value_placeholders(columns)
       output_stream.puts "      )"
       output_stream.puts "    SQL"
-      output_stream.puts "  end"
       output_stream.puts
-      output_stream.puts "  def self.create!("
+      output_stream.puts "    def self.create!("
       output_stream.puts method_parameters(columns)
-      output_stream.puts "  )"
-      output_stream.puts "    ::Migrations::Database::IntermediateDB.insert("
-      output_stream.puts "      SQL,"
-      output_stream.puts insertion_arguments(columns)
       output_stream.puts "    )"
+      output_stream.puts "      ::Migrations::Database::IntermediateDB.insert("
+      output_stream.puts "        SQL,"
+      output_stream.puts insertion_arguments(columns)
+      output_stream.puts "      )"
+      output_stream.puts "    end"
       output_stream.puts "  end"
       output_stream.puts "end"
     end
@@ -100,7 +100,7 @@ module Migrations::Database::Schema
       columns
         .map do |c|
           default_value = !c.is_primary_key && c.nullable ? " nil" : ""
-          "    #{c.name}:#{default_value}"
+          "      #{c.name}:#{default_value}"
         end
         .join(",\n")
     end
@@ -127,7 +127,7 @@ module Migrations::Database::Schema
             else
               raise "Unknown dataype: #{type}"
             end
-          "      #{argument},"
+          "        #{argument},"
         end
         .join("\n")
     end
