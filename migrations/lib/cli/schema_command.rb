@@ -79,7 +79,7 @@ module Migrations::CLI
 
       def file_header(db)
         <<~HEADER
-          This file is auto-generated from the Discourse database schema. To make changes, update
+          This file is auto-generated from the IntermediateDB schema. To make changes, update
           the "#{relative_config_path(db)}" configuration file and then run `cli schema generate` to
           regenerate this file.
         HEADER
