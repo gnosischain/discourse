@@ -24,4 +24,6 @@ module Migrations
   end
 end
 
-Dir.chdir(Rails.root) { ::Migrations::CLI::Application.start }
+# rubocop:disable Discourse/NoChdir
+Dir.chdir(File.expand_path("../..", __dir__)) { ::Migrations::CLI::Application.start }
+# rubocop:enable Discourse/NoChdir
