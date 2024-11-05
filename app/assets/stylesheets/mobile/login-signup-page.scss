@@ -1,16 +1,20 @@
 // Shared styles
 
-html.keyboard-visible.mobile-view
-  #main-outlet:has(.login-fullpage, .signup-fullpage, .invites-show) {
-  height: calc(100dvh - var(--header-offset) - env(keyboard-inset-height));
-  max-height: calc(100dvh - var(--header-offset) - env(keyboard-inset-height));
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding-top: 0;
-  .login-fullpage,
-  .signup-fullpage,
-  .invites-show {
-    padding-top: var(--header-offset);
+html.keyboard-visible.mobile-view {
+  body.login-page,
+  body.signup-page,
+  body.invite-page {
+    height: calc(100dvh - var(--header-offset) - env(keyboard-inset-height));
+    max-height: calc(00dvh - var(--header-offset) - env(keyboard-inset-height));
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-top: 0;
+
+    .login-fullpage,
+    .signup-fullpage,
+    .invites-show {
+      padding-top: var(--header-offset);
+    }
   }
 }
 
